@@ -25,7 +25,7 @@ import UrlDB.LinkDB;
 import UrlDB.MyLinkDB;
 
 /**
- * @author WuJian 2013年12月16日下午5:29:41
+ * @author WuJian 2013锟斤拷12锟斤拷16锟斤拷锟斤拷锟斤拷5:29:41
  */
 public class JsoupFilter {
 	public static void getLinks(String Url) throws IOException {
@@ -63,7 +63,7 @@ public class JsoupFilter {
 
 	}
 
-	// 控制深度的模块
+	// 娣卞害鎺у埗鐨刧etLinks鏂规硶
 	public static void getLinks(MyUrl Url, int ConDepth) throws IOException {
 		Document doc;
 
@@ -99,7 +99,7 @@ public class JsoupFilter {
 					}
 					System.out.println(Url.getUrl());
 					System.out.println(title + time + content + Url.getUrl());
-					// 组装Beans
+					//缁勮Beans
 					try {
 						WebnewBean news = new WebnewBean(title, time, content,
 								Url.getUrl());

@@ -9,7 +9,7 @@ import java.util.Set;
 import Queue.Queue;
 
 /**
- * @author WuJian 2013Äê12ÔÂ16ÈÕÏÂÎç1:10:17
+ * @author WuJian 2013å¹´12æœˆ16æ—¥1:10:17
  */
 public class LinkDB {
 	private static Set<String> VisitedUrl = new HashSet<String>();
