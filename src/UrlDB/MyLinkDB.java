@@ -10,7 +10,7 @@ import Queue.Queue;
 import UrlBean.MyUrl;
 
 /**
- * @author WuJian 2014Äê1ÔÂ5ÈÕÏÂÎç12:43:09
+ * @author WuJian 2014ï¿½ï¿½1ï¿½ï¿½5ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½12:43:09
  */
 public class MyLinkDB {
 	private static Set<MyUrl> VisitedUrl = new HashSet<MyUrl>();
@@ -33,15 +33,14 @@ public class MyLinkDB {
 	}
 
 	public static void addUnVisitedUrl(MyUrl url) {
-		//System.out.println("Ğ£Ñé");
-		//System.out.println(url!=null);
-		//System.out.println(!url.getUrl().trim().equals(""));
-		//System.out.println(!VisitedUrl.contains(url));
-		//System.out.println(!unVisitedUrl.contains(url));
+		
 		if (url != null && !url.getUrl().trim().equals("") && !VisitedUrl.contains(url)
 				&& !unVisitedUrl.contains(url)) {
 			unVisitedUrl.enQueue(url);
-			System.out.println("Èë¶Ó");
+			System.out.println("åŠ å…¥æˆåŠŸ");
+		}
+		else{
+			System.out.println("é˜Ÿåˆ—ä¸­å·²ç»å­˜åœ¨");
 		}
 	}
 

@@ -87,19 +87,19 @@ public class JsoupFilter {
 					doc = Jsoup.connect(Url.getUrl()).get();
 					Elements links = doc.select("a[href]");
 
-					Element Title = doc.select("title").first();
+					Element Title = doc.select("h1#artibodyTitle").first();
 					Elements context = doc.select("p");
-					Element Time = doc.select("div.time").first();
+					Element Time = doc.select("span#pub_date").first();
 					// List<String> Url2 = new LinkedList<String>();
 					content = context.text();
 					System.out.println(Title + content);
-					if (Title.text() != null && Time != null) {
+					if (Title!= null && Time != null) {
 						title = Title.text();
 						time = Time.text();
 					}
 					System.out.println(Url.getUrl());
 					System.out.println(title + time + content + Url.getUrl());
-					//组装Beans
+					// 组装Beans
 					try {
 						WebnewBean news = new WebnewBean(title, time, content,
 								Url.getUrl());
@@ -117,12 +117,12 @@ public class JsoupFilter {
 							Assmble.setDepth(Depth + 1);
 							// Url2.add(linkHref);
 							// System.out.println(linkHref);
-							if (Assmble.getUrl().length() > 22
+							if (Assmble.getUrl().length() > 35
 									&& Assmble
 											.getUrl()
-											.substring(0, 22)
-											.equals("http://green.sohu.com/")
-									) {
+											.substring(0, 35)
+											.equals("http://green.sina.com.cn/news/roll/")
+									&& Assmble.getUrl().endsWith("shtml")) {
 								MyLinkDB.addUnVisitedUrl(Assmble);
 							}
 						}

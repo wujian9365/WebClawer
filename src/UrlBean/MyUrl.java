@@ -6,7 +6,7 @@ package UrlBean;
 import UrlDB.MyLinkDB;
 
 /**
- * @author WuJian 2014Äê1ÔÂ5ÈÕÏÂÎç12:37:08
+ * @author WuJian 2014ï¿½ï¿½1ï¿½ï¿½5ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½12:37:08
  */
 public class MyUrl {
 	private String Url;
@@ -108,5 +108,6 @@ public class MyUrl {
 		MyLinkDB.addUnVisitedUrl(url1);
 		System.out.println("====");
 		MyLinkDB.addUnVisitedUrl(url);
+		
 	}
 }

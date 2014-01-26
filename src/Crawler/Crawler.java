@@ -13,7 +13,7 @@ import UrlDB.MyLinkDB;
 
 /**
  * @author WuJian
- *2013Äê12ÔÂ16ÈÕÏÂÎç7:35:09
+ *2013ï¿½ï¿½12ï¿½ï¿½16ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½7:35:09
  */
 public class Crawler {
 	@SuppressWarnings("unused")
@@ -22,7 +22,7 @@ public class Crawler {
 		MyUrl Intial = new MyUrl(seed,0);
 		MyLinkDB.addUnVisitedUrl(Intial);
 		
-		/*·ÇÉî¶È¿ØÖÆËã·¨
+		/*ï¿½ï¿½ï¿½ï¿½È¿ï¿½ï¿½ï¿½ï¿½ã·¨
 		while(!LinkDB.unVisitedUrlIsEmpty()&&LinkDB.getVisitedUrlNum()<1){
 			//String VisitUrl = LinkDB.unVisitedUrldeQueue();
 			String VisitUrl = MyLinkDB.unVisitedUrldeQueue().getUrl();
@@ -38,12 +38,13 @@ public class Crawler {
 		
 		while(!MyLinkDB.unVisitedUrlIsEmpty()&&MyLinkDB.getVisitedUrlNum()<100){
 			MyUrl VisitUrl = MyLinkDB.unVisitedUrldeQueue();
-			System.err.println("===="+VisitUrl.getUrl()+"===="+"ÕâÊÇµÚ"+VisitUrl.getDepth()+"²ã");
+			System.err.println("===="+VisitUrl.getUrl()+"===="+"ç¬¬"+VisitUrl.getDepth()+"å±‚");
 			if(VisitUrl==null){
 				continue;
 			}
 			JsoupFilter.getLinks(VisitUrl,100);
 			//System.err.println(MyLinkDB.unVisitedUrlIsEmpty());
+			MyLinkDB.addVisitedUrl(VisitUrl);
 			
 		}
 	}
