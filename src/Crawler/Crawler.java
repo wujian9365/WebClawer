@@ -36,7 +36,7 @@ public class Crawler {
 		}
 		*/
 		
-		while(!MyLinkDB.unVisitedUrlIsEmpty()&&MyLinkDB.getVisitedUrlNum()<100){
+		while(!MyLinkDB.unVisitedUrlIsEmpty()&&MyLinkDB.getVisitedUrlNum()<100000){
 			MyUrl VisitUrl = MyLinkDB.unVisitedUrldeQueue();
 			System.err.println("===="+VisitUrl.getUrl()+"===="+"第"+VisitUrl.getDepth()+"层");
 			if(VisitUrl==null){
@@ -45,14 +45,14 @@ public class Crawler {
 			JsoupFilter.getLinks(VisitUrl,100);
 			//System.err.println(MyLinkDB.unVisitedUrlIsEmpty());
 			MyLinkDB.addVisitedUrl(VisitUrl);
-			
+			//FileDownloader.downloadFile(VisitUrl);
 		}
 	}
 	
 	public static void main(String[] args) throws IOException{
 		Crawler crawler = new Crawler();
 		//crawler.crawling("http://war.163.com/13/1223/09/9GP5IJ9H00014OMD.html");
-		crawler.crawling("http://roll.green.sina.com.cn/green/hb_gdxw/index.shtml");
+		crawler.crawling("http://www.sina.com");
 		
 	}
 }

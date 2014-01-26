@@ -37,10 +37,10 @@ public class MyLinkDB {
 		if (url != null && !url.getUrl().trim().equals("") && !VisitedUrl.contains(url)
 				&& !unVisitedUrl.contains(url)) {
 			unVisitedUrl.enQueue(url);
-			System.out.println("加入成功");
+			
 		}
 		else{
-			System.out.println("队列中已经存在");
+			
 		}
 	}
 

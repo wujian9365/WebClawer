@@ -7,16 +7,20 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import org.apache.http.HttpConnection;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 
+import UrlBean.MyUrl;
+
 /**
- * @author WuJian 2013Äê12ÔÂ16ÈÕÏÂÎç9:58:38
+ * @author WuJian 2013ï¿½ï¿½12ï¿½ï¿½16ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½9:58:38
  */
 public class FileDownloader {
 	public static String getFileNamebyUrl(String Url) {
@@ -53,10 +57,29 @@ public class FileDownloader {
 				byte[] httpcontent = EntityUtils.toString(entity).getBytes();
 				filepath = "/Users/maggiewu/Desktop/dig/"+getFileNamebyUrl(Url);
 				SavetoLocal(httpcontent,filepath);
-			}
-			
-			
-			
+			}		
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		return filepath;
+		
+	}
+	
+	public static String downloadFile(MyUrl myUrl){
+		String filepath = null;
+		HttpClient httpclient = new DefaultHttpClient();
+		String Url = myUrl.getUrl();
+		HttpGet httpget = new HttpGet(Url);
+		httpget.getParams().setParameter("charset", "UTF-8");
+		try{
+			HttpResponse httpresponse = httpclient.execute(httpget);
+			int statuscode =  httpresponse.getStatusLine().getStatusCode();
+			if(statuscode==HttpStatus.SC_OK){
+				HttpEntity entity = httpresponse.getEntity();	
+				byte[] httpcontent = EntityUtils.toString(entity).getBytes();
+				filepath = "/Users/maggiewu/Desktop/dig/"+getFileNamebyUrl(Url);
+				SavetoLocal(httpcontent,filepath);
+			}		
 		}catch(Exception e){
 			System.out.println(e);
 		}

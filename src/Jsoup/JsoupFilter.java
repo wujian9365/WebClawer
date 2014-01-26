@@ -72,10 +72,6 @@ public class JsoupFilter {
 		HttpClient httpclient = new DefaultHttpClient();
 		System.out.print(Url);
 		int Depth = Url.getDepth();
-		String title = "k";
-		String time = "k";
-		String content = "k";
-
 		if (Url.getDepth() > ConDepth) {
 
 		} else {
@@ -87,44 +83,14 @@ public class JsoupFilter {
 					doc = Jsoup.connect(Url.getUrl()).get();
 					Elements links = doc.select("a[href]");
 
-					Element Title = doc.select("h1#artibodyTitle").first();
-					Elements context = doc.select("p");
-					Element Time = doc.select("span#pub_date").first();
-					// List<String> Url2 = new LinkedList<String>();
-					content = context.text();
-					System.out.println(Title + content);
-					if (Title!= null && Time != null) {
-						title = Title.text();
-						time = Time.text();
-					}
-					System.out.println(Url.getUrl());
-					System.out.println(title + time + content + Url.getUrl());
-					// 组装Beans
 					try {
-						WebnewBean news = new WebnewBean(title, time, content,
-								Url.getUrl());
-
-						boolean result = DBOperation.MyInsert(news);
-					} catch (Exception e) {
-						System.err.println(e);
-					}
-					try {
+						DBUtils.DBUtils.addDB(doc, "h1#artibodyTitle",
+								"span#pub_date", "p", Url.getUrl(),
+								"http://green.sina.com.cn/news/roll/");
 						for (Element link : links) {
 							String linkHref = link.attr("abs:href");
-
-							MyUrl Assmble = new MyUrl();
-							Assmble.setUrl(linkHref);
-							Assmble.setDepth(Depth + 1);
-							// Url2.add(linkHref);
-							// System.out.println(linkHref);
-							if (Assmble.getUrl().length() > 35
-									&& Assmble
-											.getUrl()
-											.substring(0, 35)
-											.equals("http://green.sina.com.cn/news/roll/")
-									&& Assmble.getUrl().endsWith("shtml")) {
-								MyLinkDB.addUnVisitedUrl(Assmble);
-							}
+							MyUrl Assmble = new MyUrl(linkHref, Depth + 1);
+							MyLinkDB.addUnVisitedUrl(Assmble);
 						}
 					} catch (Exception e) {
 						System.err.println(e);
