@@ -52,7 +52,7 @@ public class Crawler {
 	public static void main(String[] args) throws IOException{
 		Crawler crawler = new Crawler();
 		//crawler.crawling("http://war.163.com/13/1223/09/9GP5IJ9H00014OMD.html");
-		crawler.crawling("http://www.sina.com");
+		crawler.crawling("http://roll.green.sina.com.cn/green/hb_dtsh/index.shtml");
 		
 	}
 }

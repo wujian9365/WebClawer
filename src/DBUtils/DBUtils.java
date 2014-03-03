@@ -27,7 +27,7 @@ public class DBUtils {
 			String title = Title.text();
 			String time = Time.text();
 			String content = Context.text();
-			if (Src.length() > 35 && Src.substring(0, 35).equals(URL)
+			if (Src.startsWith(URL)
 					&& Src.endsWith("shtml")) {
 				// 组装Beans
 				news.setContent(content);

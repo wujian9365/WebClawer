@@ -86,11 +86,14 @@ public class JsoupFilter {
 					try {
 						DBUtils.DBUtils.addDB(doc, "h1#artibodyTitle",
 								"span#pub_date", "p", Url.getUrl(),
-								"http://green.sina.com.cn/news/roll/");
+								"http://green.sina.com.cn/");
 						for (Element link : links) {
 							String linkHref = link.attr("abs:href");
 							MyUrl Assmble = new MyUrl(linkHref, Depth + 1);
-							MyLinkDB.addUnVisitedUrl(Assmble);
+							if (Assmble.getUrl().startsWith(
+									"http://roll.green.sina.com.cn/green")) {
+								MyLinkDB.addUnVisitedUrl(Assmble);
+							}
 						}
 					} catch (Exception e) {
 						System.err.println(e);
@@ -104,5 +107,6 @@ public class JsoupFilter {
 
 	public static void main(String[] args) throws IOException {
 		getLinks("http://www.sina.com.cn");
+		System.out.println("http://blog.sina.com.cn/yizhongtian".startsWith("http://blog.sina.com.cn"));
 	}
 }
